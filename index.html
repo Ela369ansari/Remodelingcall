@@ -119,39 +119,37 @@ footer .logo .mark{height:60px}
 .port-foot{display:flex;justify-content:center;margin-top:64px}
 
 
-/* before/after */
-.bas{display:grid;grid-template-columns:repeat(2,1fr);gap:56px 32px}
-.ba{margin:0;display:grid;gap:18px;align-content:start;min-width:0}
-.ba.feature,.ba.wide{grid-column:1/-1}
-.ba-frame{position:relative;display:block;width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--coal);border:0;padding:0;max-width:100%}
-.ba.feature .ba-frame{aspect-ratio:16/10}
-.ba.wide .ba-frame{aspect-ratio:auto;cursor:zoom-in}
-.ba.wide .ba-frame img{position:static;height:auto}
-.ba-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* before/after reel */
+.site{padding-bottom:100px}
+.reel{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-inline:max(16px,calc((100vw - 1240px)/2 + 16px));scroll-padding-inline:max(16px,calc((100vw - 1240px)/2 + 16px));padding-bottom:16px;scrollbar-width:none}
+.reel::-webkit-scrollbar{display:none}
+.ba{margin:0;flex:0 0 auto;width:min(520px,84vw);display:grid;gap:18px;align-content:start;scroll-snap-align:start}
+.ba-frame{position:relative;display:block;width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--coal);border:0;padding:0;max-width:100%;user-select:none;-webkit-user-select:none}
+button.ba-frame{cursor:zoom-in}
+.ba-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
 .ba-frame img.before{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
-.ba-frame .handle{position:absolute;top:0;bottom:0;left:var(--pos);width:1px;background:#F6F4EF;pointer-events:none}
-.ba-frame .handle::after{content:"‹ ›";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:var(--gold);color:#F6F4EF;display:grid;place-items:center;font-size:18px;letter-spacing:4px;box-shadow:0 2px 14px rgba(0,0,0,.35)}
-.ba-frame .tag{position:absolute;top:16px;font-size:10px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:#F6F4EF;background:rgba(14,14,13,.55);padding:6px 10px;pointer-events:none}
+.handle{position:absolute;top:0;bottom:0;left:var(--pos);width:64px;margin-left:-32px;cursor:ew-resize;touch-action:none;z-index:2}
+.handle::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:#F6F4EF}
+.grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--gold);box-shadow:0 2px 14px rgba(0,0,0,.4)}
+.grip::before,.grip::after{content:"";position:absolute;top:50%;width:8px;height:8px;border-top:1.5px solid #F6F4EF;border-left:1.5px solid #F6F4EF}
+.grip::before{left:12px;transform:translateY(-50%) rotate(-45deg)}
+.grip::after{right:12px;transform:translateY(-50%) rotate(135deg)}
+.ba-frame .tag{position:absolute;top:16px;z-index:1;font-size:10px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:#F6F4EF;background:rgba(14,14,13,.55);padding:6px 10px;pointer-events:none}
 .ba-frame .tag.l{left:16px}.ba-frame .tag.r{right:16px}
-.ba-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none;background:transparent}
-.ba-range:focus-visible + *,.ba-frame:focus-within .handle::after{outline:2px solid #F6F4EF;outline-offset:3px}
-.ba figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap}
-.ba h3{font-size:30px;line-height:1.15}
-.ba .specs{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey)}
-/* on-site reel */
-.site{padding-bottom:110px}
-.site .head{margin-bottom:48px}
-.reel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-inline:max(16px,calc((100vw - 1240px)/2 + 16px));padding-bottom:14px;scrollbar-color:var(--hair-d) transparent}
-.shot{flex:0 0 auto;width:min(300px,72vw);aspect-ratio:3/4;scroll-snap-align:start;border:0;padding:0;background:var(--coal);cursor:zoom-in;overflow:hidden}
-.shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
-.shot:hover img{transform:scale(1.05)}
+.ba-range{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.ba-frame:has(.ba-range:focus-visible) .grip{outline:2px solid #F6F4EF;outline-offset:3px}
+.ba figcaption{display:grid;gap:4px}
+.ba h3{font-size:28px;line-height:1.15}
+.ba .specs{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey-d)}
+.reel-nav{display:flex;gap:12px;justify-content:flex-end;margin-top:28px}
+.arrow{width:52px;height:52px;border-radius:50%;border:1px solid var(--hair-d);background:transparent;color:#EDEAE3;font-size:18px;cursor:pointer;transition:border-color .3s,background .3s}
+.arrow:hover{border-color:var(--gold-l);background:var(--gold)}
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:20;background:rgba(10,10,9,.94);display:grid;place-items:center;padding:calc(24px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .lb img{max-width:100%;max-height:100%;object-fit:contain}
 .lb button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));background:none;border:1px solid #F6F4EF;color:#F6F4EF;font:inherit;font-size:11px;letter-spacing:.3em;text-transform:uppercase;padding:10px 16px;cursor:pointer}
 .map-link{font-family:var(--f-ui);font-size:10px;letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid var(--gold);text-decoration:none;color:var(--grey)}
 .map-link:hover{color:var(--ink)}
-@media (max-width:760px){.bas{grid-template-columns:1fr;gap:48px}.ba.feature .ba-frame{aspect-ratio:4/5}}
 
 /* founder */
 .founder .grid{display:grid;grid-template-columns:5fr 6fr;gap:80px;align-items:center}
@@ -296,7 +294,7 @@ header nav{font-size:11px;letter-spacing:.18em;gap:14px}
 
 <header>
 <div class="wrap">
-<nav aria-label="Main left"><a href="#portfolio">Portfolio</a><a href="#studio">On Site</a><a href="#services">Services</a></nav>
+<nav aria-label="Main left"><a href="#portfolio">Portfolio</a><a href="#services">Services</a></nav>
 <a class="logo" href="#top" aria-label="Remodeling Call — home">
 <svg class="mark" viewBox="0 0 64 80" aria-hidden="true"><path d="M6 78V30a26 26 0 0 1 52 0v48" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M12 78V31a20 20 0 0 1 40 0v47" fill="none" stroke="currentColor" stroke-width=".6" opacity=".55"/><line x1="2" y1="78" x2="62" y2="78" stroke="currentColor" stroke-width="1.2"/><text x="32" y="62" text-anchor="middle" font-family="Bodoni Moda, Didot, Georgia, serif" font-size="26" fill="currentColor" letter-spacing="-1">R<tspan font-style="italic" dx="-2">C</tspan></text></svg>
 <span class="w">Remodeling Call</span><span class="s">Design · Build</span>
@@ -342,79 +340,85 @@ header nav{font-size:11px;letter-spacing:.18em;gap:14px}
 <li>General Contracting</li><li>Engineering</li><li>Painting &amp; Decorating</li><li>Interior Design</li>
 </ul></div>
 
-<section id="portfolio">
+<section id="portfolio" class="dark site">
 <div class="wrap">
 <div class="head">
 <span class="eyebrow">Selected Work</span>
-<h2>Before <em>&amp;</em> After</h2>
+<h2>Before <em style="color:var(--gold-l)">&amp;</em> After</h2>
 <div class="rule"></div>
-<p class="muted">Drag across each photo to see the transformation. From thoughtful room updates to complete home renovations, each project is shaped around the client’s style, space and budget.</p>
+<p class="muted">Drag the line on each photo to reveal the transformation. Swipe or use the arrows to see more projects.</p>
 </div>
-<div class="bas">
-<figure class="ba ">
+</div>
+<div class="reel" id="reel" tabindex="0" aria-label="Before and after projects">
+<figure class="ba">
 <div class="ba-frame" style="--pos:50%">
 <img src="img/living-after.jpg" alt="Living Room, after" loading="lazy">
 <img class="before" src="img/living-before.jpg" alt="Living Room, before" loading="lazy">
 <span class="tag l">Before</span><span class="tag r">After</span>
-<span class="handle" aria-hidden="true"></span>
+<span class="handle" aria-hidden="true"><span class="grip"></span></span>
 <input class="ba-range" type="range" min="0" max="100" value="50" id="ba-living" aria-label="Compare before and after: Living Room">
 </div>
-<figcaption><h3>Living Room</h3><span class="specs">Structure to finished suite</span></figcaption>
+<figcaption><h3>Living Room</h3><span class="specs">Raw concrete to a lit lounge suite</span></figcaption>
 </figure>
-<figure class="ba ">
+<figure class="ba">
 <div class="ba-frame" style="--pos:50%">
 <img src="img/island-after.jpg" alt="Kitchen &amp; Island, after" loading="lazy">
 <img class="before" src="img/island-before.jpg" alt="Kitchen &amp; Island, before" loading="lazy">
 <span class="tag l">Before</span><span class="tag r">After</span>
-<span class="handle" aria-hidden="true"></span>
+<span class="handle" aria-hidden="true"><span class="grip"></span></span>
 <input class="ba-range" type="range" min="0" max="100" value="50" id="ba-island" aria-label="Compare before and after: Kitchen &amp; Island">
 </div>
-<figcaption><h3>Kitchen &amp; Island</h3><span class="specs">Open-plan kitchen</span></figcaption>
+<figcaption><h3>Kitchen &amp; Island</h3><span class="specs">Marble island, pendants, cabinetry</span></figcaption>
 </figure>
-<figure class="ba ">
+<figure class="ba">
 <div class="ba-frame" style="--pos:50%">
 <img src="img/dining-after.jpg" alt="Dining &amp; Great Room, after" loading="lazy">
 <img class="before" src="img/dining-before.jpg" alt="Dining &amp; Great Room, before" loading="lazy">
 <span class="tag l">Before</span><span class="tag r">After</span>
-<span class="handle" aria-hidden="true"></span>
+<span class="handle" aria-hidden="true"><span class="grip"></span></span>
 <input class="ba-range" type="range" min="0" max="100" value="50" id="ba-dining" aria-label="Compare before and after: Dining &amp; Great Room">
 </div>
-<figcaption><h3>Dining &amp; Great Room</h3><span class="specs">Island, lighting, finishes</span></figcaption>
+<figcaption><h3>Dining &amp; Great Room</h3><span class="specs">Marble table, open great room</span></figcaption>
 </figure>
-<figure class="ba ">
+<figure class="ba">
 <div class="ba-frame" style="--pos:50%">
 <img src="img/terrace2-after.jpg" alt="Terrace Lounge, after" loading="lazy">
 <img class="before" src="img/terrace2-before.jpg" alt="Terrace Lounge, before" loading="lazy">
 <span class="tag l">Before</span><span class="tag r">After</span>
-<span class="handle" aria-hidden="true"></span>
+<span class="handle" aria-hidden="true"><span class="grip"></span></span>
 <input class="ba-range" type="range" min="0" max="100" value="50" id="ba-terrace2" aria-label="Compare before and after: Terrace Lounge">
 </div>
-<figcaption><h3>Terrace Lounge</h3><span class="specs">Fire lounge &amp; dining</span></figcaption>
+<figcaption><h3>Terrace Lounge</h3><span class="specs">Fire lounge, dining, planting</span></figcaption>
 </figure>
-<figure class="ba wide">
+<figure class="ba">
+<div class="ba-frame" style="--pos:50%">
+<img src="img/terrace-after.jpg" alt="Rooftop Terrace, after" loading="lazy">
+<img class="before" src="img/terrace-before.jpg" alt="Rooftop Terrace, before" loading="lazy">
+<span class="tag l">Before</span><span class="tag r">After</span>
+<span class="handle" aria-hidden="true"><span class="grip"></span></span>
+<input class="ba-range" type="range" min="0" max="100" value="50" id="ba-terrace" aria-label="Compare before and after: Rooftop Terrace">
+</div>
+<figcaption><h3>Rooftop Terrace</h3><span class="specs">Evening lounge with a view</span></figcaption>
+</figure>
+<figure class="ba">
+<div class="ba-frame" style="--pos:50%">
+<img src="img/kitchen-after.jpg" alt="Kitchen Refresh, after" loading="lazy">
+<img class="before" src="img/kitchen-before.jpg" alt="Kitchen Refresh, before" loading="lazy">
+<span class="tag l">Before</span><span class="tag r">After</span>
+<span class="handle" aria-hidden="true"><span class="grip"></span></span>
+<input class="ba-range" type="range" min="0" max="100" value="50" id="ba-kitchen" aria-label="Compare before and after: Kitchen Refresh">
+</div>
+<figcaption><h3>Kitchen Refresh</h3><span class="specs">Cabinetry, counters, flooring</span></figcaption>
+</figure>
+<figure class="ba">
 <button class="ba-frame zoom" type="button" data-src="img/exterior.jpg" aria-label="Enlarge Modern Villa photo"><img src="img/exterior.jpg" alt="Modern villa: under construction and completed" loading="lazy"></button>
 <figcaption><h3>Modern Villa</h3><span class="specs">Construction to completion · Turkey 2023</span></figcaption>
 </figure>
 </div>
-</div>
+<div class="wrap reel-nav"><button type="button" class="arrow" id="prev" aria-label="Previous project">←</button><button type="button" class="arrow" id="next" aria-label="Next project">→</button></div>
 </section>
 
-<section id="studio" class="dark site">
-<div class="wrap">
-<div class="head"><span class="eyebrow">On Site</span><h2>Craft in <em style="color:var(--gold-l)">progress</em></h2><p class="muted">Details, framing and finishes from our job sites. Tap any photo to enlarge.</p></div>
-</div>
-<div class="reel" tabindex="0" aria-label="On-site photos, scroll sideways">
-<button class="shot zoom" type="button" data-src="img/slat-wall.jpg" aria-label="Enlarge: Finished wood slat wall"><img src="img/slat-wall.jpg" alt="Finished wood slat wall" loading="lazy"></button>
-<button class="shot zoom" type="button" data-src="img/site-framing.jpg" aria-label="Enlarge: Wall opened to the studs"><img src="img/site-framing.jpg" alt="Wall opened to the studs" loading="lazy"></button>
-<button class="shot zoom" type="button" data-src="img/site-structure.jpg" aria-label="Enlarge: Structural framing"><img src="img/site-structure.jpg" alt="Structural framing" loading="lazy"></button>
-<button class="shot zoom" type="button" data-src="img/kitchen-wide.jpg" aria-label="Enlarge: Finished white kitchen"><img src="img/kitchen-wide.jpg" alt="Finished white kitchen" loading="lazy"></button>
-<button class="shot zoom" type="button" data-src="img/site-kitchen.jpg" aria-label="Enlarge: Kitchen during renovation"><img src="img/site-kitchen.jpg" alt="Kitchen during renovation" loading="lazy"></button>
-<button class="shot zoom" type="button" data-src="img/site-panel.jpg" aria-label="Enlarge: Wall panel install"><img src="img/site-panel.jpg" alt="Wall panel install" loading="lazy"></button>
-<button class="shot zoom" type="button" data-src="img/site-drywall.jpg" aria-label="Enlarge: New drywall and flooring"><img src="img/site-drywall.jpg" alt="New drywall and flooring" loading="lazy"></button>
-</div>
-</section>
-
-<section id="founder" class="founder dark">
+<section id="founder" class="founder dark" style="border-top:1px solid var(--hair-d)">
 <div class="wrap grid">
 <div class="ph"><img src="img/elara.jpg" alt="Elara, CEO and architectural engineer" onerror="this.remove()"><span class="cap">Elara</span></div>
 <div>
@@ -531,7 +535,7 @@ header nav{font-size:11px;letter-spacing:.18em;gap:14px}
 <div class="wrap">
 <div class="grid">
 <div><span class="logo"><svg class="mark" viewBox="0 0 64 80" aria-hidden="true"><path d="M6 78V30a26 26 0 0 1 52 0v48" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M12 78V31a20 20 0 0 1 40 0v47" fill="none" stroke="currentColor" stroke-width=".6" opacity=".55"/><line x1="2" y1="78" x2="62" y2="78" stroke="currentColor" stroke-width="1.2"/><text x="32" y="62" text-anchor="middle" font-family="Bodoni Moda, Didot, Georgia, serif" font-size="26" fill="currentColor" letter-spacing="-1">R<tspan font-style="italic" dx="-2">C</tspan></text></svg><span class="w">Remodeling Call</span><span class="s">Design · Build</span></span><p class="tag">Home remodeling and interior renovation in Los Angeles. Thoughtful design, smart planning, beautiful results.</p></div>
-<div><h4>Explore</h4><ul><li><a href="#portfolio">Before &amp; After</a></li><li><a href="#studio">On Site</a></li><li><a href="#services">Services</a></li><li><a href="#founder">About</a></li><li><a href="#consultation">Consultation</a></li></ul></div>
+<div><h4>Explore</h4><ul><li><a href="#portfolio">Before &amp; After</a></li><li></li><li><a href="#services">Services</a></li><li><a href="#founder">About</a></li><li><a href="#consultation">Consultation</a></li></ul></div>
 <div><h4>Contact</h4><ul><li><a href="tel:+13102699739">+1 (310) 269-9739</a></li><li><a href="mailto:info@remodelingcall.com">info@remodelingcall.com</a></li><li>Los Angeles, USA</li></ul></div>
 <div><h4>Follow</h4><ul><li><a href="https://www.instagram.com/remodelingcall" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://wa.me/message/O7JLUG2AWH5WB1" target="_blank" rel="noopener">WhatsApp</a></li></ul></div>
 </div>
@@ -564,7 +568,23 @@ form.addEventListener('submit',e=>{
   const out=document.getElementById('out');out.hidden=false;out.scrollIntoView({block:'nearest',behavior:'smooth'});
 });
 
-document.querySelectorAll('.ba-range').forEach(r=>{const f=r.closest('.ba-frame');const set=()=>f.style.setProperty('--pos',r.value+'%');r.addEventListener('input',set);set();});
+document.querySelectorAll('.ba-range').forEach(r=>{
+  const f=r.closest('.ba-frame'),h=f.querySelector('.handle');
+  const set=v=>{v=Math.max(0,Math.min(100,v));r.value=v;f.style.setProperty('--pos',v+'%');};
+  r.addEventListener('input',()=>set(+r.value));
+  const at=e=>{const b=f.getBoundingClientRect();return (e.clientX-b.left)/b.width*100;};
+  let drag=false;
+  const start=(e)=>{drag=true;f.setPointerCapture(e.pointerId);set(at(e));e.preventDefault();};
+  h.addEventListener('pointerdown',start);
+  f.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.target!==h&&!h.contains(e.target))start(e);});
+  f.addEventListener('pointermove',e=>{if(drag)set(at(e));});
+  const end=()=>{drag=false;};f.addEventListener('pointerup',end);f.addEventListener('pointercancel',end);
+  f.addEventListener('click',()=>r.focus({preventScroll:true}));
+});
+const reel=document.getElementById('reel');
+const step=d=>{const c=reel.querySelector('.ba');reel.scrollBy({left:d*(c.getBoundingClientRect().width+24),behavior:'smooth'});};
+document.getElementById('prev').addEventListener('click',()=>step(-1));
+document.getElementById('next').addEventListener('click',()=>step(1));
 const lbOpen=src=>{const d=document.createElement('div');d.className='lb';d.setAttribute('role','dialog');d.setAttribute('aria-modal','true');d.innerHTML='<img alt=""><button type="button">Close</button>';d.querySelector('img').src=src;const close=()=>{d.remove();document.removeEventListener('keydown',k)};const k=e=>{if(e.key==='Escape')close()};d.addEventListener('click',close);document.addEventListener('keydown',k);document.body.appendChild(d);d.querySelector('button').focus();};
 document.querySelectorAll('.zoom').forEach(b=>b.addEventListener('click',()=>lbOpen(b.dataset.src)));
 document.getElementById('copy-req').addEventListener('click',e=>copyText(document.getElementById('out-text').textContent,e.currentTarget));
